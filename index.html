@@ -1,25 +1,237 @@
 <!doctype html>
 <html lang="sv">
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Knanzo Games</title>
+  <meta name="description" content="Knanzo Games utvecklar mobilappar och spel." />
+  <style>
+    :root{
+      --bg: #0b1020;
+      --card: rgba(255,255,255,.08);
+      --card2: rgba(255,255,255,.06);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.70);
+      --border: rgba(255,255,255,.14);
+      --accent: #7c3aed;
+      --accent2:#22c55e;
+      --shadow: 0 20px 60px rgba(0,0,0,.45);
+      --radius: 18px;
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      color:var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background:
+        radial-gradient(1200px 600px at 15% 10%, rgba(124,58,237,.35), transparent 55%),
+        radial-gradient(900px 500px at 85% 15%, rgba(34,197,94,.22), transparent 55%),
+        radial-gradient(900px 600px at 50% 90%, rgba(59,130,246,.18), transparent 55%),
+        var(--bg);
+      min-height:100vh;
+    }
+    a{ color:inherit; }
+    .wrap{ max-width: 980px; margin: 0 auto; padding: 28px 18px 60px; }
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px; padding: 14px 16px;
+      border:1px solid var(--border);
+      background: linear-gradient(180deg, var(--card), var(--card2));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+    .brand{ display:flex; align-items:center; gap:12px; }
+    .logo{
+      width:42px; height:42px; border-radius: 14px;
+      background: linear-gradient(135deg, rgba(124,58,237,.95), rgba(34,197,94,.65));
+      display:grid; place-items:center;
+      border:1px solid rgba(255,255,255,.20);
+      box-shadow: 0 12px 30px rgba(124,58,237,.25);
+      font-weight: 800;
+      letter-spacing: .5px;
+    }
+    .brand h1{ font-size: 16px; margin:0; line-height:1.2; }
+    .brand p{ margin:0; font-size: 12px; color: var(--muted); }
+    .pill{
+      display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end;
+      font-size: 12px;
+    }
+    .pill span{
+      padding: 8px 10px;
+      border:1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+    }
+
+    .hero{
+      margin-top: 18px;
+      padding: 28px 18px;
+      border-radius: calc(var(--radius) + 6px);
+      border:1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.05));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      overflow:hidden;
+      position:relative;
+    }
+    .hero:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(650px 220px at 25% 0%, rgba(124,58,237,.25), transparent 60%),
+                  radial-gradient(650px 220px at 75% 0%, rgba(34,197,94,.18), transparent 60%);
+      pointer-events:none;
+    }
+    .hero-inner{ position:relative; }
+    .hero h2{ margin:0 0 10px; font-size: 30px; letter-spacing:-.02em; }
+    .hero p{ margin:0 0 16px; color: var(--muted); max-width: 70ch; }
+    .cta{
+      display:flex; gap:10px; flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-flex; align-items:center; gap:10px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.06);
+      text-decoration:none;
+      color: var(--text);
+      font-weight: 600;
+    }
+    .btn.primary{
+      border-color: rgba(124,58,237,.55);
+      background: linear-gradient(135deg, rgba(124,58,237,.85), rgba(124,58,237,.35));
+    }
+    .grid{
+      margin-top: 16px;
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+    .card{
+      grid-column: span 12;
+      padding: 16px;
+      border-radius: var(--radius);
+      border:1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
+      box-shadow: 0 18px 50px rgba(0,0,0,.35);
+      backdrop-filter: blur(10px);
+    }
+    .card h3{ margin:0 0 8px; font-size: 16px; }
+    .card p{ margin:0; color: var(--muted); }
+    .card ul{ margin:10px 0 0; padding-left: 18px; color: var(--muted); }
+    .card li{ margin: 6px 0; }
+    .mono{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 12px;
+      color: rgba(255,255,255,.78);
+      border: 1px solid var(--border);
+      background: rgba(0,0,0,.18);
+      padding: 10px 12px;
+      border-radius: 12px;
+      overflow:auto;
+    }
+    footer{
+      margin-top: 20px;
+      color: rgba(255,255,255,.55);
+      font-size: 12px;
+      text-align:center;
+    }
+    @media (min-width: 820px){
+      .hero{ padding: 34px 28px; }
+      .hero h2{ font-size: 38px; }
+      .card.span6{ grid-column: span 6; }
+      .card.span4{ grid-column: span 4; }
+    }
+  </style>
 </head>
-<body style="font-family: Arial; max-width: 700px; margin: 40px auto;">
-  <h1>Knanzo Games</h1>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <div class="logo">K</div>
+        <div>
+          <h1>Knanzo Games</h1>
+          <p>Mobilappar & spel • Sverige</p>
+        </div>
+      </div>
+      <div class="pill">
+        <span>Support</span>
+        <span>Privacy Policy</span>
+        <span>Disclaimer</span>
+      </div>
+    </div>
 
-  <p><strong>Organisationsnummer:</strong> XXXXXX-XXXX</p>
-  <p><strong>Kontakt:</strong> info@knanzogames.se</p>
+    <section class="hero" aria-label="Intro">
+      <div class="hero-inner">
+        <h2>Enkel, tydlig och Apple-vänlig sida för Knanzo Games.</h2>
+        <p>
+          Den här sidan fungerar som officiell kontakt- och supportsida för våra appar.
+          Den är byggd för att vara lätt, snabb och tydlig för användare (och verifiering).
+        </p>
+        <div class="cta">
+          <a class="btn primary" href="mailto:support@knanzogames.se">✉️ Kontakta support</a>
+          <a class="btn" href="mailto:info@knanzogames.se">📩 Företagskontakt</a>
+        </div>
+      </div>
+    </section>
 
-  <h2>Om oss</h2>
-  <p>Knanzo Games utvecklar mobilapplikationer och digitala spel.</p>
+    <section class="grid" aria-label="Info">
+      <div class="card span6">
+        <h3>Företagsuppgifter</h3>
+        <p>Officiell information om verksamheten.</p>
+        <div style="height:10px"></div>
+        <div class="mono">
+Knanzo Games<br>
+Org.nr: ORGNR-HÄR<br>
+E-post: info@knanzogames.se<br>
+Support: support@knanzogames.se
+        </div>
+      </div>
 
-  <h2>Support</h2>
-  <p>Kontakta oss via e-post för supportärenden.</p>
+      <div class="card span6">
+        <h3>Support</h3>
+        <p>Behöver du hjälp med en app? Mejla oss så återkommer vi.</p>
+        <ul>
+          <li>Skriv vilken app det gäller</li>
+          <li>Beskriv problemet kort</li>
+          <li>Skicka gärna skärmdump om det hjälper</li>
+        </ul>
+      </div>
 
-  <h2>Privacy Policy</h2>
-  <p>Denna app samlar inte in personuppgifter utan användarens samtycke.</p>
+      <div class="card span6">
+        <h3>Privacy Policy</h3>
+        <p>
+          Vi strävar efter att samla in så lite data som möjligt.
+          <strong>Justera texten nedan så den stämmer exakt med din app.</strong>
+        </p>
+        <div style="height:10px"></div>
+        <div class="mono">
+Som standard samlar vi inte in personuppgifter utan ditt samtycke.
+Om appen använder analysverktyg (t.ex. crash reports) kan viss teknisk data
+samlas in för att förbättra stabilitet och prestanda.
+        </div>
+      </div>
 
-  <h2>Disclaimer</h2>
-  <p>Denna app är inofficiell och har inget samarbete med klubbar, ligor eller spelare.</p>
+      <div class="card span6">
+        <h3>Disclaimer</h3>
+        <p>Extra tydlighet för användare och plattformar.</p>
+        <div style="height:10px"></div>
+        <div class="mono">
+Denna app är inofficiell och har inget samarbete med eller licens från
+klubbar, ligor eller spelare. Alla varumärken tillhör sina respektive ägare.
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="y"></span> Knanzo Games • Byggd med GitHub Pages
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
