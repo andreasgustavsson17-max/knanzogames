@@ -9,32 +9,28 @@
 </head>
 <body>
   <div class="wrap">
-    <header class="topbar">
+    <header class="header">
       <div class="brand">
-        <div class="logo">K</div>
-        <div>
-          <h1>Knanzo Games</h1>
-          <p>Sollebrunn, Sweden</p>
-        </div>
+        <h1>Knanzo Games</h1>
+        <p>Sollebrunn, Sweden</p>
       </div>
-
       <nav class="nav" aria-label="Primary">
         <a href="index.html">Home</a>
         <a class="active" href="games.html">Games</a>
       </nav>
     </header>
 
-    <section class="hero">
+    <main class="hero">
       <h2>Games</h2>
       <p>Our current title is listed below.</p>
-    </section>
+    </main>
 
-    <section class="grid" aria-label="Game list">
+    <section class="section">
       <div class="card">
-        <h3>Samba App</h3>
-        <p>
-          A game where you guess football players by looking at their club history.
-          You can use helpful hints to reveal things like initials, nationality, position, and more.
+        <h3 style="margin:0 0 10px; font-size:16px;">Samba App</h3>
+        <p style="margin:0; color:#5b5b66;">
+          Samba App is a game where you guess football players by looking at their club history.
+          You can use helpful hints to reveal initials, nationality, position, and more.
           Available on Google Play and the App Store. Enjoy!
         </p>
 
@@ -46,19 +42,15 @@
           <span class="badge">Position</span>
         </div>
 
-        <div class="btnrow">
+        <div class="actions">
           <!-- Replace # with your real store links when you have them -->
-          <a class="btn" href="#" aria-disabled="true" onclick="return false;">Google Play (link coming)</a>
-          <a class="btn secondary" href="#" aria-disabled="true" onclick="return false;">App Store (link coming)</a>
+          <a class="btn primary disabled" href="#">Google Play (link coming)</a>
+          <a class="btn disabled" href="#">App Store (link coming)</a>
         </div>
-
-        <p style="margin-top:12px; color: rgba(255,255,255,.55); font-size:12px;">
-          Want the links live now? Replace the “#” above with your store URLs.
-        </p>
       </div>
     </section>
 
-    <footer>© <span id="y"></span> Knanzo Games</footer>
+    <footer class="footer">© <span id="y"></span> Knanzo Games</footer>
   </div>
 
   <script>
