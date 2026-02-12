@@ -4,101 +4,54 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Knanzo Games</title>
-  <meta name="description" content="Company information for Knanzo Games." />
-  <style>
-    :root{
-      --bg:#0b1020;
-      --card:rgba(255,255,255,.08);
-      --card2:rgba(255,255,255,.06);
-      --text:rgba(255,255,255,.92);
-      --muted:rgba(255,255,255,.72);
-      --border:rgba(255,255,255,.14);
-      --shadow:0 20px 60px rgba(0,0,0,.45);
-      --radius:18px;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      min-height:100vh;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      color:var(--text);
-      background:
-        radial-gradient(1100px 520px at 20% 10%, rgba(124,58,237,.30), transparent 55%),
-        radial-gradient(900px 520px at 85% 15%, rgba(34,197,94,.18), transparent 55%),
-        radial-gradient(900px 620px at 50% 90%, rgba(59,130,246,.16), transparent 55%),
-        var(--bg);
-    }
-    a{color:inherit}
-    .wrap{max-width:920px;margin:0 auto;padding:28px 18px 60px}
-    .card{
-      border:1px solid var(--border);
-      background:linear-gradient(180deg,var(--card),var(--card2));
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      backdrop-filter: blur(10px);
-      padding:20px;
-    }
-    .top{
-      display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
-      padding:14px 16px;margin-bottom:16px;
-    }
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo{
-      width:42px;height:42px;border-radius:14px;
-      background:linear-gradient(135deg, rgba(124,58,237,.95), rgba(34,197,94,.65));
-      display:grid;place-items:center;
-      border:1px solid rgba(255,255,255,.20);
-      font-weight:800;letter-spacing:.5px;
-    }
-    h1{font-size:18px;margin:0;line-height:1.2}
-    .sub{margin:0;font-size:12px;color:var(--muted)}
-    .hero{padding:24px}
-    .hero h2{margin:0 0 10px;font-size:34px;letter-spacing:-.02em}
-    .hero p{margin:0 0 16px;color:var(--muted);max-width:70ch}
-    .btn{
-      display:inline-flex;align-items:center;gap:10px;
-      padding:10px 14px;border-radius:12px;
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.06);
-      text-decoration:none;font-weight:600;
-    }
-    .mono{
-      margin-top:14px;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-size:12px;color:rgba(255,255,255,.80);
-      border:1px solid var(--border);
-      background:rgba(0,0,0,.18);
-      padding:12px 14px;border-radius:12px;
-      overflow:auto;
-    }
-    footer{margin-top:16px;text-align:center;color:rgba(255,255,255,.55);font-size:12px}
-  </style>
+  <meta name="description" content="Knanzo Games — official company site." />
+  <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
   <div class="wrap">
-    <div class="card top">
+    <header class="topbar">
       <div class="brand">
         <div class="logo">K</div>
         <div>
           <h1>Knanzo Games</h1>
-          <p class="sub">Sollebrunn, Sweden</p>
+          <p>Sollebrunn, Sweden</p>
         </div>
       </div>
-    </div>
 
-    <section class="card hero" aria-label="Company information">
+      <nav class="nav" aria-label="Primary">
+        <a class="active" href="index.html">Home</a>
+        <a href="games.html">Games</a>
+      </nav>
+    </header>
+
+    <section class="hero">
       <h2>Company Information</h2>
       <p>
-        Knanzo Games is based in Sollebrunn, Sweden. For any inquiries, please contact us via email.
+        Knanzo Games is based in Sollebrunn, Sweden. This website provides official company
+        information and a contact point for inquiries.
       </p>
 
-      <a class="btn" href="mailto:kontakt@sambaapp.se">✉️ kontakt@sambaapp.se</a>
+      <div class="btnrow">
+        <a class="btn" href="mailto:kontakt@sambaapp.se">✉️ kontakt@sambaapp.se</a>
+        <a class="btn secondary" href="games.html">View games →</a>
+      </div>
 
       <div class="mono">
 Knanzo Games<br>
 Org. no: 970614-XXXX<br>
 Location: Sollebrunn, Sweden<br>
 Contact: kontakt@sambaapp.se
+      </div>
+    </section>
+
+    <section class="grid" aria-label="Quick links">
+      <div class="card span6">
+        <h3>Contact</h3>
+        <p>Email us at <a href="mailto:kontakt@sambaapp.se">kontakt@sambaapp.se</a>.</p>
+      </div>
+      <div class="card span6">
+        <h3>Games</h3>
+        <p>Check out our game: Samba App.</p>
       </div>
     </section>
 
